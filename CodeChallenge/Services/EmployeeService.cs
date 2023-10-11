@@ -11,11 +11,13 @@ namespace CodeChallenge.Services
     public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeRepository _employeeRepository;
+        private readonly IReportingStructureRepository _reportingStructureRepository;
         private readonly ILogger<EmployeeService> _logger;
 
         public EmployeeService(ILogger<EmployeeService> logger, IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
+            _reportingStructureRepository = new ReportingStructureRepository();
             _logger = logger;
         }
 
@@ -58,6 +60,19 @@ namespace CodeChallenge.Services
             }
 
             return newEmployee;
+        }
+        public ReportingStructure GetReportingStructure(Employee employee)
+        {
+            ReportingStructure tempRS = new ReportingStructure();
+            if (employee != null)
+            {
+                tempRS.employee = employee;
+                tempRS.numberOfReports = 5;
+                _logger.LogDebug($"Got here again");
+                tempRS.numberOfReports = _reportingStructureRepository.getNumberOfReports(employee);
+                return tempRS;
+            }
+            return null;
         }
     }
 }
