@@ -85,3 +85,10 @@ Compensation from the persistence layer.
 
 ## Delivery
 Please upload your results to a publicly accessible Git repo. Free ones are provided by Github and Bitbucket.
+
+
+## Errors
+I still notice a similar issue where IDs do not come back when viewing an employee in their "Reports To" section of the code.
+This also caused an issue with calculating the number of Reports To that I did not notice in the Java challenge. The list is coming back null.
+I believe that I got the Compensation set up but am unfamiliar with how these in memory DB's are created in Visual Studio so I added some services
+and attempted to get this working.
